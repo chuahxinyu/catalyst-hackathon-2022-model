@@ -92,5 +92,9 @@ def gen_desc():
     # return json.dumps("Hello World!")
     return json.dumps(desc)
 
+@app.route("/")
+def home_view():
+        return "<h1>Caption Generator Endpoint</h1>"
+
 if __name__ == '__main__':
     app.run()
