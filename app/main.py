@@ -1,5 +1,5 @@
 from flask import Flask, request
-from flask_cors import CORS, cross_origin
+# from flask_cors import CORS, cross_origin
 
 import json
 import io
@@ -69,11 +69,10 @@ xception_model = Xception(include_top=False, pooling="avg")
 
 
 app = Flask(__name__)
-cors = CORS(app)
-app.config['CORS_HEADERS'] = 'Content-Type'
+# cors = CORS(app)
+# app.config['CORS_HEADERS'] = 'Content-Type'
 
-@app.route('/', methods=['POST'])
-@cross_origin()
+@app.route('/post/', methods=['POST'])
 def gen_desc():
     data = request.data
     imgdata = base64.b64decode(data[22:])
@@ -94,7 +93,7 @@ def gen_desc():
 
 @app.route("/")
 def home_view():
-        return "<h1>Caption Generator Endpoint</h1>"
+    return "<h1>Caption Generator Endpoint</h1>"
 
 if __name__ == '__main__':
     app.run()
